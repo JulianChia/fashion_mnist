@@ -1,4 +1,5 @@
 # fashion_mnist.py
+![Title](FashionMNIST.png)
 This python module provides a simple to use function to download and extract the Fashion-MNIST database of Zalando's article images that is provided in http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/.
 
 **Function:**
