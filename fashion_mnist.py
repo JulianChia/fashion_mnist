@@ -34,7 +34,7 @@ from dataklasses import dataklass
 
 
 @dataklass
-class MNISTimages:
+class FashionMNISTimages:
     magic_number: int
     nimages: int
     nrows: int
@@ -43,7 +43,7 @@ class MNISTimages:
 
 
 @dataklass
-class MNISTlabels:
+class FashionMNISTlabels:
     magic_number: int
     nlabels: int
     labels: np.array
@@ -54,7 +54,8 @@ def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
     test_images, test_labels.
 
     Kwargs:
-     path - str: MNIST datasets directory. Default to current directory/MNIST.
+     path - str: FashionMNIST datasets directory.
+                 Default to current directory/FashionMNIST.
                  Create if nonexistant. Download any missing files.
      normalise - boolean: yes -> pixels RGB values [0,255] divided by 255.
                           no  -> pixels RGB values [0,255].
@@ -66,26 +67,26 @@ def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
      {'train': {'images': train_images, 'labels': train_labels},
       'test': {'images': test_images, 'labels': test_labels}}
      where,
-      train_images = MNISTimages(magic_number=2051, nimages=60000, nrows=28,
-                                 ncols=28, pixels=np.array())
+      train_images = FashionMNISTimages(magic_number=2051, nimages=60000,
+                                        nrows=28, ncols=28, pixels=np.array())
             if normalise, pixels dtype='float32' & [0.0(white), 1.0(black)]
             else,         pixels.dtype='uint8' & [0(white), 255(black)]
             if flatten,   pixels.shape=(60000, 784)
             else,         pixels.shape=(60000, 28, 28)
-      train_labels = MNISTlabels(magic_number=2049, nlabels=60000,
-                                 labels=np.array() dtype='uint8')
+      train_labels = FashionMNISTlabels(magic_number=2049, nlabels=60000,
+                                        labels=np.array() dtype='uint8')
             if onehot,    labels.shape=(60000, 10)
             else,         labels.shape=(60000,)
-      test_images = MNISTimages(magic_number=2051, nimages=10000, nrows=28,
-                                ncols=28, pixels=np.array())
+      test_images = FashionMNISTimages(magic_number=2051, nimages=10000,
+                                       nrows=28, ncols=28, pixels=np.array())
             if normalise, pixels dtype='float64' & [0.0(white), 1.0(black)]
             else,         pixels dtype='uint8' & [0(white), 255(black)]
             if flatten,   pixels.shape = (10000, 784)
             else,         pixels.shape = (10000, 28, 28)
-      test_labels = MNISTlabels(magic_number=2049, nlabels=10000,
-                                labels=np.array() dtype='uint8')
-            if onehot,   labels.shape = (10000, 10)
-            else,        labels.shape = (10000,)
+      test_labels = FashionMNISTlabels(magic_number=2049, nlabels=10000,
+                                       labels=np.array() dtype='uint8')
+            if onehot,    labels.shape = (10000, 10)
+            else,         labels.shape = (10000,)
     """
     def _set_FashionMNIST_dir(file_parent_path):
         if not file_parent_path:  # Set dir to current directory / MNIST
@@ -156,7 +157,7 @@ def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
             # - Each image dimensions 28x28=784 pixels
             pixels = _normalise_or_not(contents)
             pixels = _flatten_or_not(pixels, nimages, nrows, ncols)
-        return MNISTimages(magic_number, nimages, nrows, ncols, pixels)
+        return FashionMNISTimages(magic_number, nimages, nrows, ncols, pixels)
 
     def _extract_labels(filepath):
         """Return labels loaded locally."""
@@ -175,7 +176,7 @@ def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
                 print('- .labels is a 1D numpy array with uint8 values, shape ', end='')
                 labels = labels.astype('uint8')
             print(labels.shape)
-        return MNISTlabels(magic_number, nlabels, labels)
+        return FashionMNISTlabels(magic_number, nlabels, labels)
 
     url = 'http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/'
     files = ['train-images-idx3-ubyte.gz',  # train_images
