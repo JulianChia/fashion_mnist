@@ -51,7 +51,9 @@ class FashionMNISTlabels:
 
 def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
     """Function to download and extract MNIST train_images, train_labels,
-    test_images, test_labels.
+    test_images and test_labels into dataklass objections for deep learning.
+
+    dataklass from https://github.com/dabeaz/dataklasses
 
     Kwargs:
      path - str: FashionMNIST datasets directory.
@@ -81,12 +83,12 @@ def load_FashionMNIST(path=None, normalise=True, flatten=True, onehot=True):
                                        nrows=28, ncols=28, pixels=np.array())
             if normalise, pixels dtype='float64' & [0.0(white), 1.0(black)]
             else,         pixels dtype='uint8' & [0(white), 255(black)]
-            if flatten,   pixels.shape = (10000, 784)
-            else,         pixels.shape = (10000, 28, 28)
+            if flatten,   pixels.shape=(10000, 784)
+            else,         pixels.shape=(10000, 28, 28)
       test_labels = FashionMNISTlabels(magic_number=2049, nlabels=10000,
                                        labels=np.array() dtype='uint8')
-            if onehot,    labels.shape = (10000, 10)
-            else,         labels.shape = (10000,)
+            if onehot,    labels.shape=(10000, 10)
+            else,         labels.shape=(10000,)
     """
     def _set_FashionMNIST_dir(file_parent_path):
         if not file_parent_path:  # Set dir to current directory / MNIST
