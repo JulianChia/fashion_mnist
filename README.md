@@ -13,8 +13,8 @@ _kwarg:_
                  Create if nonexistant. Download any missing files.
      normalise - boolean: yes -> pixels RGB values [0,255] divided by 255.
                           no  -> pixels RGB values [0,255].
-     flatten   - boolean: yes -> pixels of each image stored as 1D numpy array.
-                          no  -> pixels of each image stored as 2D numpy array.
+     flatten   - boolean: yes -> pixels of all images stored as 2D numpy array.
+                          no  -> pixels of all images stored as 3D numpy array.
      onehot    - boolean: yes -> labels stored as one-hot encoded numpy array.
                           no  -> labels values used.
 
@@ -53,5 +53,5 @@ _Returns a nested dictionary:_
     fmdb = load_FashionMNIST()                   # Get FashionMNIST database using default settings
     train_images = fmdb['train']['pixels']       # A 60000x784 numpy array with float32 values    
     train_labels = fmdb['train']['labels']       # A 60000x10 numpy array with uint8 values
-    test_images = fmdb['test']['pixels']        # A 10000x784 numpy array with float32 values    
-    test_labels = fmdb['test']['labels']        # A 10000x10 numpy array with uint8 values
+    test_images = fmdb['test']['pixels']         # A 10000x784 numpy array with float32 values    
+    test_labels = fmdb['test']['labels']         # A 10000x10 numpy array with uint8 values
