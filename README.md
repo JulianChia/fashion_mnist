@@ -35,7 +35,7 @@ _Returns a nested dictionary:_
             else,         labels.shape=(60000,)
       test_images = FashionMNISTimages(magic_number=2051, nimages=10000,
                                        nrows=28, ncols=28, pixels=np.array())
-            if normalise, pixels dtype='float64' & [0.0(white), 1.0(black)]
+            if normalise, pixels dtype='float32' & [0.0(white), 1.0(black)]
             else,         pixels dtype='uint8' & [0(white), 255(black)]
             if flatten,   pixels.shape=(10000, 784)
             else,         pixels.shape=(10000, 28, 28)
@@ -53,5 +53,5 @@ _Returns a nested dictionary:_
     fmdb = load_FashionMNIST()                   # Get FashionMNIST database using default settings
     train_images = fmdb['train']['pixels']       # A 60000x784 numpy array with float32 values    
     train_labels = fmdb['train']['labels']       # A 60000x10 numpy array with uint8 values
-    test_images = fmdb['train']['pixels']        # A 10000x784 numpy array with float32 values    
-    test_labels = fmdb['train']['labels']        # A 10000x10 numpy array with uint8 values
+    test_images = fmdb['test']['pixels']        # A 10000x784 numpy array with float32 values    
+    test_labels = fmdb['test']['labels']        # A 10000x10 numpy array with uint8 values
